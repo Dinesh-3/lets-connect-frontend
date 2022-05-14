@@ -1,0 +1,23 @@
+.header {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    max-width: 80rem;
+    margin: auto;
+    align-items: center;
+    padding: 1rem 0;
+}
+
+.container {
+    display: flex;
+    gap: 1rem;
+}
+
+.search {
+    flex-grow: 2;
+}
+
+.search input {
+    width: 80%;
+    margin: auto;
+}

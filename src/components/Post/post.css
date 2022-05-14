@@ -1,0 +1,7 @@
+.post-container {
+    padding: 1rem;
+    /* border: 2px solid black; */
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    margin: 1rem;
+    border-radius: 0.5rem;
+}
