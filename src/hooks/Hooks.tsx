@@ -39,7 +39,7 @@ const useLocalStorage = (key, initialValue) => {
     });
 
     useEffect(() => {
-        localStorage.setItem(key, JSON.stringify(value));
+        localStorage.setItem(key, value);
     }, [value]);
     return [value, setValue];
 };
@@ -59,7 +59,7 @@ const getNetworkStatus = () => {
 };
 
 const getSavedValue = (key, initialValue) => {
-    const savedValue = JSON.parse(localStorage.getItem(key));
+    const savedValue = localStorage.getItem(key);
     if (savedValue) return savedValue;
 
     if (initialValue instanceof Function) return initialValue();

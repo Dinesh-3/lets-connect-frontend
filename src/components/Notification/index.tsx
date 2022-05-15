@@ -55,7 +55,7 @@ const Notification = () => {
             {Object.values(queue).map(({ id, message, isVisible, type, status }) => (
                 <Fade show={isVisible} key={id}>
                     <AlertNotification
-                        type={type}
+                        // type={type}
                         id={id}
                         message={message}
                         handleClose={hideNotification}

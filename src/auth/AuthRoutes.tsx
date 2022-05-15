@@ -1,5 +1,5 @@
 import React from "react";
-import { Route, Redirect, Navigate } from "react-router-dom";
+import { Route, Navigate } from "react-router-dom";
 import Notification from "../components/Notification";
 import { useAuth } from "./AuthContext";
 
@@ -13,12 +13,7 @@ const PrivateRoute = ({ component: Component, ...rest }) => {
     const { useUser } = useAuth();
     const [userDetail] = useUser();
 
-    return (
-        <Route
-            {...rest}
-            render={(props) => (userDetail ? <Component {...props} /> : <Navigate to="/login" replace />)}
-        />
-    );
+    return <Route {...rest} element={userDetail ? <Component /> : <Navigate to="/login" replace />} />;
 };
 
 /**
@@ -31,15 +26,7 @@ const ProtectFromLoggedInUser = ({ component: Component, ...rest }) => {
     const { useUser } = useAuth();
     const [userDetail] = useUser();
 
-    return (
-        <Route
-            {...rest}
-            render={(props) => {
-                if (userDetail) return <Navigate to="/" />;
-                return <Component {...props} />;
-            }}
-        />
-    );
+    return <Route {...rest} element={userDetail ? <Navigate to="/" /> : <Component />} />;
 };
 
 /**
@@ -51,20 +38,11 @@ const ProtectFromLoggedInUser = ({ component: Component, ...rest }) => {
 const AdminRoute = ({ component: Component, ...rest }) => {
     const { useUser } = useAuth();
     const [userDetail] = useUser();
+
     return (
         <Route
             {...rest}
-            render={(props) => {
-                if (userDetail && userDetail.isAdmin) {
-                    return <Component {...props} />;
-                } else {
-                    Notification.show({
-                        status: false,
-                        message: "Access denied for normal users"
-                    });
-                    return <Navigate to="/" />;
-                }
-            }}
+            element={<div>{userDetail && userDetail.isAdmin ? <Component /> : <Navigate to="/" />}</div>}
         />
     );
 };

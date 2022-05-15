@@ -1,8 +1,15 @@
-import React, { useState, useEffect } from "react";
+import { type } from "@testing-library/user-event/dist/type";
+import React, { useState, useEffect, FC } from "react";
 
 import "./AlertNotification.css";
 
-const Fade = ({ show, children, onUnmount }) => {
+type FadeProps = {
+    show: boolean;
+    children: React.ReactElement;
+    onUnmount?: Function;
+};
+
+const Fade: FC<FadeProps> = ({ show, children, onUnmount }) => {
     const [shouldRender, setRender] = useState(show);
 
     useEffect(() => {
@@ -19,6 +26,7 @@ const Fade = ({ show, children, onUnmount }) => {
             <div
                 className={`${show ? "fadeIn" : "fadeOutSlide"}`}
                 style={{ zIndex: "500" }}
+                //@ts-ignore
                 show={show.toString()}
                 onAnimationEnd={animationEnd}
             >

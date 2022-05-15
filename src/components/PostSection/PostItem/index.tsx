@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useContext } from "react";
+import { useAuth } from "../../../auth/AuthContext";
 
 import "./post.css";
 
-const Post = ({ post }) => {
+const PostItem = ({ post }) => {
     return (
         <div className="post-container">
             <h6>{post.title}</h6>
@@ -11,4 +12,4 @@ const Post = ({ post }) => {
     );
 };
 
-export default Post;
+export default PostItem;

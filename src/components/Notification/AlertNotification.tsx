@@ -17,7 +17,7 @@ const AlertNotification = ({ id, message, status, handleClose }) => {
         const closeMe = () => {
             handleClose(id);
         };
-        let timer = window.setTimeout(closeMe, 5000);
+        let timer = window.setTimeout(closeMe, 2000);
         return () => window.clearTimeout(timer);
     }, [id, handleClose]);
 

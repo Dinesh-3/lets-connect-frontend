@@ -1,6 +1,8 @@
 import React, { Component } from "react";
+import PostSection from "../PostSection";
+import PostForm from "../PostSection/create";
 
-import Posts from "../Posts";
+import Posts from "../PostSection/Posts";
 import SideNav from "../SideNav";
 
 import "./homepage.css";
@@ -10,7 +12,7 @@ class HomePage extends Component {
     render() {
         return (
             <main className="home-page">
-                <Posts />
+                <PostSection />
                 <SideNav />
             </main>
         );
